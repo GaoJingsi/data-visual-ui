@@ -18,7 +18,7 @@
     "build:dev": "eslint ./src && rollup -c rollup.config.dev.js",
     "build:prod": "eslint ./src && rollup -c rollup.config.prod.js"
   },
-  "author": "高静思",
+  "author": "a1040147371",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.4",
