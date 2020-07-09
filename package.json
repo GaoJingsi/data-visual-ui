@@ -2,7 +2,17 @@
   "name": "data-visual-ui",
   "version": "1.0.0",
   "description": "数据可视化UI框架",
-  "main": "index.js",
+  "main": "./dist/jingsi.data-visual.min.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "data visual",
+    "datav",
+    "vue 3",
+    "ui library"
+  ],
   "scripts": {
     "dev": "rollup -wc ./src/index.js",
     "build:dev": "eslint ./src && rollup -c rollup.config.dev.js",
