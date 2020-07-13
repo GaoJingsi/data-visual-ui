@@ -1,6 +1,6 @@
 {
   "name": "data-visual-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "数据可视化UI框架",
   "main": "./dist/jingsi.data-visual.min.js",
   "files": [

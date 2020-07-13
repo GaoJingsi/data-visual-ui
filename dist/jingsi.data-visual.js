@@ -67,8 +67,75 @@
       Vue.component(script.name, script);
     }
 
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    var script$1 = {
+      name: 'icon',
+      props: {
+        name: {
+          type: String,
+          default: ''
+        },
+        prefix: {
+          type: String,
+          default: 'icon'
+        },
+        style: {
+          type: Object,
+          default: {}
+        },
+        clazz: {
+          type: Array || Object,
+          default: []
+        }
+      },
+
+      setup(ctx, a, b) {
+        const iconId = `#${ctx.prefix}${ctx.name}`;
+        return {
+          iconId
+        };
+      }
+
+    };
+
+    const _withId$1 = /*#__PURE__*/vue.withScopeId("data-v-38d2d0ef");
+
+    vue.pushScopeId("data-v-38d2d0ef");
+    const _hoisted_1$1 = { class: "icon" };
+    vue.popScopeId();
+
+    const render$1 = /*#__PURE__*/_withId$1(function render(_ctx, _cache) {
+      return (vue.openBlock(), vue.createBlock("div", {
+        class: ["icon-wrapper", _ctx.clazz],
+        style: _ctx.style
+      }, [
+        (vue.openBlock(), vue.createBlock("svg", _hoisted_1$1, [
+          vue.createVNode("use", { href: _ctx.iconId }, null, 8 /* PROPS */, ["href"])
+        ]))
+      ], 6 /* CLASS, STYLE */))
+    });
+
+    var css_248z$1 = ".icon-wrapper[data-v-38d2d0ef] {\n  display: inline-block;\n}\n.icon-wrapper[data-v-38d2d0ef] .icon {\n  width: 100%;\n  height: 100%;\n  fill: currentColor;\n}";
+    styleInject(css_248z$1);
+
+    script$1.render = render$1;
+    script$1.__scopeId = "data-v-38d2d0ef";
+    script$1.__file = "src/components/Icon/Icon.vue";
+
+    function Icon (Vue) {
+      Vue.component(script$1.name, script$1);
+    }
+
     function index (Vue) {
       Vue.use(Test);
+      Vue.use(Icon);
     }
 
     return index;

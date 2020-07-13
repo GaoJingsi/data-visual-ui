@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试Icon组件是否可用</title>
+    <script src="./js/vue.global.js"></script>
+    <script src="../dist/jingsi.data-visual.js"></script>
+    <style>
+        .vue-icon {
+            width: 50px;
+            height: 50px;
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div>{{message}}</div>
+    <!--  原生SVG  -->
+    <div style="width: 50px;height: 50px;display: inline-block;color: aqua;">
+        <svg width="100%" height="100%" viewBox="0 0 100 100">
+            <line x1="0" y1="0" x2="100" y2="100" stroke-width="1" stroke="currentColor"/>
+            <line x1="100" y1="0" x2="0" y2="100" stroke-width="1" stroke="currentColor"/>
+        </svg>
+    </div>
+    <!--  引用原生SVG, width和height设为0，是为了不显示出来，只被引用就好了  -->
+    <svg width="0" height="0">
+        <defs>
+            <symbol id="icon1" viewBox="0 0 100 100">
+                <line x1="0" y1="0" x2="100" y2="100" stroke-width="1" stroke="currentColor"/>
+                <line x1="100" y1="0" x2="0" y2="100" stroke-width="1" stroke="currentColor"/>
+            </symbol>
+        </defs>
+    </svg>
+    <div style="width: 50px;height: 50px;display: inline-block;color: red;">
+        <svg width="100%" height="100%">
+            <use href="#icon1"/>
+        </svg>
+    </div>
+    <!--  SVG的VUE3组件  -->
+    <svg width="0" height="0">
+        <defs>
+            <symbol id="icontimes" viewBox="0 0 100 100">
+                <line x1="0" y1="0" x2="100" y2="100" stroke-width="1" stroke="currentColor"/>
+                <line x1="100" y1="0" x2="0" y2="100" stroke-width="1" stroke="currentColor"/>
+            </symbol>
+        </defs>
+    </svg>
+    <icon name="times" style="width: 50px;height: 50px;color: bisque;"/>
+<!--    <icon name="times" :clazz="['vue-icon']"/>-->
+
+    <svg width="50px" height="50px" viewBox="0 0 100 100">
+        <circle r="50" cx="50" cy="50"/>
+    </svg>
+    <svg width="0" height="0">
+        <defs>
+            <symbol id="iconcircle" viewBox="0 0 100 100">
+                <circle r="50" cx="50" cy="50"/>
+            </symbol>
+        </defs>
+    </svg>
+    <icon name="circle" :clazz="['vue-icon']"/>
+</div>
+<script>
+    Vue.createApp({
+        setup() {
+            return {
+                message: 'hello world!'
+            }
+        }
+    }).use(DataVisual).mount('#app');
+</script>
+</body>
+</html>
