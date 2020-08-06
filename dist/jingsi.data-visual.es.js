@@ -71,6 +71,8 @@ function Test (Vue) {
 //
 //
 //
+//
+//
 var script$1 = {
   name: 'icon',
   props: {
@@ -92,7 +94,7 @@ var script$1 = {
     }
   },
 
-  setup(ctx, a, b) {
+  setup(ctx) {
     const iconId = `#${ctx.prefix}${ctx.name}`;
     return {
       iconId
@@ -104,22 +106,28 @@ var script$1 = {
 const _withId$1 = /*#__PURE__*/withScopeId("data-v-38d2d0ef");
 
 pushScopeId("data-v-38d2d0ef");
-const _hoisted_1$1 = { class: "icon" };
+const _hoisted_1$1 = { class: "icon-container" };
+const _hoisted_2 = { class: "icon" };
 popScopeId();
 
 const render$1 = /*#__PURE__*/_withId$1(function render(_ctx, _cache) {
-  return (openBlock(), createBlock("div", {
-    class: ["icon-wrapper", _ctx.clazz],
-    style: _ctx.style
-  }, [
-    (openBlock(), createBlock("svg", _hoisted_1$1, [
-      createVNode("use", { href: _ctx.iconId }, null, 8 /* PROPS */, ["href"])
-    ]))
-  ], 6 /* CLASS, STYLE */))
+  return (openBlock(), createBlock("div", _hoisted_1$1, [
+    createVNode("div", {
+      class: ["icon-wrapper", _ctx.clazz],
+      style: _ctx.style
+    }, [
+      (openBlock(), createBlock("svg", _hoisted_2, [
+        createVNode("use", { href: _ctx.iconId }, null, 8 /* PROPS */, ["href"])
+      ]))
+    ], 6 /* CLASS, STYLE */)
+  ]))
 });
 
 var css_248z$1 = ".icon-wrapper[data-v-38d2d0ef] {\n  display: inline-block;\n}\n.icon-wrapper[data-v-38d2d0ef] .icon {\n  width: 100%;\n  height: 100%;\n  fill: currentColor;\n}";
 styleInject(css_248z$1);
+
+var css_248z$2 = ".icon-container {\n  display: inline-block;\n}";
+styleInject(css_248z$2);
 
 script$1.render = render$1;
 script$1.__scopeId = "data-v-38d2d0ef";

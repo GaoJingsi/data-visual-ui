@@ -11,6 +11,10 @@
             height: 50px;
             color: purple;
         }
+
+        .bordered {
+            border: 1px solid #000;
+        }
     </style>
 </head>
 <body>
@@ -37,6 +41,14 @@
             <use href="#icon1"/>
         </svg>
     </div>
+    <!--  原生SVG使用matrix变换  -->
+    <svg width="1000" height="1000" viewBox="0 0 1000 1000" class="bordered">
+        <rect
+                x="10" y="10"
+                width="20" height="20"
+                stroke="red" stroke-width="1" fill="green"
+                transform="matrix(1 1 1 1 0 0)"/>
+    </svg>
     <!--  SVG的VUE3组件  -->
     <svg width="0" height="0">
         <defs>
@@ -46,8 +58,8 @@
             </symbol>
         </defs>
     </svg>
-    <icon name="times" style="width: 50px;height: 50px;color: bisque;"/>
-<!--    <icon name="times" :clazz="['vue-icon']"/>-->
+    <div><icon name="times" style="width: 50px;height: 50px;color: bisque;"/></div>
+    <div><icon name="times" :clazz="['vue-icon']"/></div>
 
     <svg width="50px" height="50px" viewBox="0 0 100 100">
         <circle r="50" cx="50" cy="50"/>
@@ -59,7 +71,7 @@
             </symbol>
         </defs>
     </svg>
-    <icon name="circle" :clazz="['vue-icon']"/>
+    <div><icon name="circle" :clazz="['vue-icon']"/></div>
 </div>
 <script>
     Vue.createApp({

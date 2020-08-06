@@ -1,8 +1,10 @@
 <template>
-    <div class="icon-wrapper" :style="style" :class="clazz">
-        <svg class="icon">
-            <use :href="iconId"/>
-        </svg>
+    <div class="icon-container">
+        <div class="icon-wrapper" :style="style" :class="clazz">
+            <svg class="icon">
+                <use :href="iconId"/>
+            </svg>
+        </div>
     </div>
 </template>
 
@@ -27,7 +29,7 @@
                 default: []
             }
         },
-        setup(ctx, a, b) {
+        setup(ctx) {
             const iconId = `#${ctx.prefix}${ctx.name}`
             return {
                 iconId
@@ -45,5 +47,11 @@
             height: 100%;
             fill: currentColor;
         }
+    }
+</style>
+
+<style lang="scss">
+    .icon-container {
+        display: inline-block;
     }
 </style>
