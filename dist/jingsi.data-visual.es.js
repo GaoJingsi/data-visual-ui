@@ -186,10 +186,16 @@ var script$2 = {
   name: 'flyBox',
 
   setup() {
-    const uuid = v4();
+    const uuid = v4({
+      random: [0x10, 0x91, 0x56, 0xbe, 0xc4, 0xfb, 0xc1, 0xea, 0x71, 0xb4, 0xef, 0xe1, 0x67, 0x1c, 0x58, 0x36]
+    }); // const uuid = uuidv4()
+
     let width = ref(0);
     let height = ref(0);
     let path = computed(() => `M5 5 L${width.value - 5} 5 L${width.value - 5} ${height.value - 5} L5 ${height.value - 5} Z`);
+    let rectId = `rect-${uuid}`;
+    let radialGradientId = `radialGradient-${uuid}`;
+    let starMaskId = `starMask-${uuid}`;
     onMounted(() => {
       const instance = getCurrentInstance();
       width.value = instance.ctx.$refs.container.clientWidth;
@@ -197,7 +203,9 @@ var script$2 = {
     });
     return {
       path,
-      uuid
+      rectId,
+      radialGradientId,
+      starMaskId
     };
   }
 
@@ -221,13 +229,7 @@ const _hoisted_4 = /*#__PURE__*/createVNode("stop", {
   "stop-color": "#fff",
   "stop-opacity": "0"
 }, null, -1 /* HOISTED */);
-const _hoisted_5 = /*#__PURE__*/createVNode("use", {
-  href: "#rect",
-  stroke: "#000000",
-  "stroke-width": "1",
-  fill: "none"
-}, null, -1 /* HOISTED */);
-const _hoisted_6 = { class: "content-container" };
+const _hoisted_5 = { class: "content-container" };
 popScopeId();
 
 const render$2 = /*#__PURE__*/_withId$2(function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -235,11 +237,11 @@ const render$2 = /*#__PURE__*/_withId$2(function render(_ctx, _cache, $props, $s
     (openBlock(), createBlock("svg", _hoisted_2$1, [
       createVNode("defs", null, [
         createVNode("path", {
-          id: `rect-${_ctx.uuid}`,
+          id: _ctx.rectId,
           d: _ctx.path
         }, null, 8 /* PROPS */, ["id", "d"]),
         createVNode("radialGradient", {
-          id: `radialGradient-${_ctx.uuid}`,
+          id: _ctx.radialGradientId,
           cx: "50%",
           cy: "50%",
           fx: "100%",
@@ -250,13 +252,13 @@ const render$2 = /*#__PURE__*/_withId$2(function render(_ctx, _cache, $props, $s
           _hoisted_4
         ], 8 /* PROPS */, ["id"]),
         createVNode("mask", {
-          id: `starMask-${_ctx.uuid}`
+          id: `${_ctx.starMaskId}`
         }, [
           createVNode("circle", {
-            r: "200",
+            r: "50",
             cx: "5",
             cy: "5",
-            fill: `url(#radialGradient-${_ctx.uuid})`
+            fill: `url(#${_ctx.radialGradientId})`
           }, [
             createVNode("animateMotion", {
               path: _ctx.path,
@@ -267,22 +269,27 @@ const render$2 = /*#__PURE__*/_withId$2(function render(_ctx, _cache, $props, $s
           ], 8 /* PROPS */, ["fill"])
         ], 8 /* PROPS */, ["id"])
       ]),
-      _hoisted_5,
       createVNode("use", {
-        href: "#rect",
+        href: `#${_ctx.rectId}`,
+        stroke: "#000000",
+        "stroke-width": "1",
+        fill: "none"
+      }, null, 8 /* PROPS */, ["href"]),
+      createVNode("use", {
+        href: `#${_ctx.rectId}`,
         stroke: "#09f",
         "stroke-width": "3",
         fill: "none",
-        mask: `url(#starMask-${_ctx.uuid})`
-      }, null, 8 /* PROPS */, ["mask"])
+        mask: `url(#${_ctx.starMaskId})`
+      }, null, 8 /* PROPS */, ["href", "mask"])
     ])),
-    createVNode("div", _hoisted_6, [
+    createVNode("div", _hoisted_5, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 512 /* NEED_PATCH */))
 });
 
-var css_248z$3 = ".container[data-v-513cc2e2] {\n  position: relative;\n}\n.container[data-v-513cc2e2] .fly-box {\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n.container[data-v-513cc2e2] .content-container {\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n}";
+var css_248z$3 = ".container[data-v-513cc2e2] {\n  position: relative;\n}\n.container[data-v-513cc2e2] .fly-box {\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n.container[data-v-513cc2e2] .content-container {\n  width: auto;\n  height: 100%;\n  padding: 10px;\n}";
 styleInject(css_248z$3);
 
 script$2.render = render$2;
